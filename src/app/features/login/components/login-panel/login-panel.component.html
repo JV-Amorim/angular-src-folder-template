@@ -1,0 +1,49 @@
+<div id="login-panel">
+  <mat-progress-bar
+    *ngIf="loginRequestState === 'Loading'"
+    color="primary"
+    mode="indeterminate"
+  ></mat-progress-bar>
+
+  <form
+    *ngIf="loginForm"
+    [formGroup]="loginForm"
+    [ngClass]="{ 'disabled': loginRequestState === 'Loading' }"
+    (ngSubmit)="handleFormSubmit()"
+  >
+    <h2> Login </h2>
+
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label> Email </mat-label>
+      <input
+        matInput
+        formControlName="email"
+        (click)="credentialsError = ''"
+      >
+      <mat-error *ngIf="loginForm.controls['email'].invalid">
+        {{ getFormControlErrorMessage('email') }}
+      </mat-error>
+    </mat-form-field>
+  
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label> Senha </mat-label>
+      <input
+        matInput
+        type="password"
+        formControlName="password"
+        (click)="credentialsError = ''"
+      >
+      <mat-error *ngIf="loginForm.controls['password'].invalid">
+        {{ getFormControlErrorMessage('password') }}
+      </mat-error>
+    </mat-form-field>
+
+    <button mat-flat-button color="primary">
+      Acessar
+    </button>
+
+    <mat-error *ngIf="credentialsError" class="credentials-error">
+      {{ credentialsError }}
+    </mat-error>
+  </form>
+</div>

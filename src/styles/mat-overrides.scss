@@ -1,0 +1,43 @@
+@import './app-variables.scss';
+
+// Snack Bars:
+
+@mixin custom-snackbar {
+  color: #FFFFFF;
+  font-weight: 500;
+  border-radius: 3px;
+}
+
+.info-snackbar {
+  @include custom-snackbar;
+
+  color: $app-text-primary-color;
+  background-color: #FFFFFF;
+}
+
+.success-snackbar {
+  @include custom-snackbar;
+
+  color: $app-text-primary-color;
+  background-color: $app-success-color;
+  border-radius: 3px;
+}
+
+.warning-snackbar {
+  @include custom-snackbar;
+
+  color: $app-text-primary-color;
+  background-color: $app-warning-color;
+  border-radius: 3px;
+}
+
+.error-snackbar {
+  @include custom-snackbar;
+
+  background-color: $app-error-color;
+  border-radius: 3px;
+
+  button {
+    color: #D1D1D1;
+  }
+}
